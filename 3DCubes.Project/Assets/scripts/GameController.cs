@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     private float camMoveToYPosition=0,camMoveSpeed=2f;
     public Transform cubeToPlace;
     public GameObject cubeToCreate, allCubes;
+    
     public GameObject[] canvasStartPage;
     private Rigidbody allCubesRb;
     private bool firstCube;
@@ -39,8 +40,8 @@ public class GameController : MonoBehaviour
         toCameraColor = Camera.main.backgroundColor;
       mainCam = Camera.main.transform;
         camMoveToYPosition = 4.9f + nowCube.y;
-        //  mainCam = Camera.main.transform;
-        //camMoveToYPosition = 5.9f + nowCube.y - 1f;
+        mainCam = Camera.main.transform;
+        camMoveToYPosition = 5.9f + nowCube.y - 1f;
         allCubesRb = allCubes.GetComponent<Rigidbody>();
         showCubePlace = StartCoroutine(ShowCubePlace());
     }
@@ -60,6 +61,7 @@ public class GameController : MonoBehaviour
             foreach (GameObject obj in canvasStartPage)
                 Destroy(obj);
                 }
+                
            GameObject newCube = Instantiate(
                 cubeToCreate,
                 cubeToPlace.position,
@@ -70,7 +72,7 @@ public class GameController : MonoBehaviour
             allCubesRb.isKinematic = true;
             allCubesRb.isKinematic = false;
             SpawnPositions();
-           MoveCameraChangeBg()    ;
+           MoveCameraChangeBg();
           
         }
 
@@ -84,8 +86,8 @@ public class GameController : MonoBehaviour
        mainCam.localPosition =  Vector3.MoveTowards(mainCam.localPosition,
           new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z),
          camMoveSpeed * Time.deltaTime);
-   //     if (Camera.main.backgroundColor != toCameraColor) ;
-   //     Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, toCameraColor, Time.deltaTime / 1.5f);
+       if (Camera.main.backgroundColor != toCameraColor) 
+       Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, toCameraColor, Time.deltaTime / 1.5f);
     }
 
     private void MoveCameraChangeBg()
@@ -110,11 +112,15 @@ public class GameController : MonoBehaviour
             mainCam.localPosition -= new Vector3(0, 0, 2.5f);
             prevCountMaxHorizontal = maxHor;
         }
-        // mainCam.localPosition = new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z);
+         mainCam.localPosition = new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z);
 
 
         if (maxY >= 5)
             toCameraColor = bgColors[1];
+            if (maxY >= 3)
+            toCameraColor = bgColors[0];
+            if (maxY >= 7)
+            toCameraColor = bgColors[2];
        
 
        
