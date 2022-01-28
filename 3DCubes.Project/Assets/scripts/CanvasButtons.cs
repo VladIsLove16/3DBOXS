@@ -15,6 +15,8 @@ private void Start(){
 
   public void RestartGame()
     {
+        if(PlayerPrefs.GetString("music")=="Yes")
+        GetComponent<AudioSource>().Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     private void OnGUI() {
@@ -26,6 +28,8 @@ private void Start(){
 }
     public void Insta( )
     {
+        if(PlayerPrefs.GetString("music")=="Yes")
+        GetComponent<AudioSource>().Play();
         Application.OpenURL("https://www.instagram.com/nyphkastesnyphka/");
     }
     public void MusicWork()
@@ -33,6 +37,7 @@ private void Start(){
         if(PlayerPrefs.GetString("music")=="No"){
             PlayerPrefs.SetString("music","Yes");
             GetComponent<Image>().sprite=musicOn;
+ GetComponent<AudioSource>().Play();
         }
         else
         {

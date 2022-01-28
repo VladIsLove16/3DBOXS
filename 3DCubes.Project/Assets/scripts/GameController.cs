@@ -3,12 +3,13 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     private CubePos nowCube = new CubePos(0, 1, 0);
-   // public float pi= 3.14159265358979323846f, Count =1f,blue=0,red=0,green=0;
-    public float CubeChangePlaceSpeed = 0.5f;
-    private float camMoveToYPosition=0,camMoveSpeed=2f;
+       public float CubeChangePlaceSpeed = 0.5f;
+    private float camMoveToYPosition,camMoveSpeed=2f;
+    public Text scoreTxt;
     public Transform cubeToPlace;
     public GameObject cubeToCreate, allCubes,vfx;
 
@@ -37,11 +38,12 @@ public class GameController : MonoBehaviour
     private void Start()
                 
     {
+        scoreTxt.text="<size=15><color=#C31414>Best Score:</color></size>"+ PlayerPrefs.GetInt("score")+"<size=15><color=#1BB70F>Now:</color></size>";
+      
         toCameraColor = Camera.main.backgroundColor;
-      mainCam = Camera.main.transform;
+     mainCam = Camera.main.transform;
         camMoveToYPosition = 4.9f + nowCube.y;
-        mainCam = Camera.main.transform;
-        camMoveToYPosition = 5.9f + nowCube.y - 1f;
+        
         allCubesRb = allCubes.GetComponent<Rigidbody>();
         showCubePlace = StartCoroutine(ShowCubePlace());
     }
@@ -69,10 +71,14 @@ public class GameController : MonoBehaviour
             newCube.transform.SetParent(allCubes.transform);
             nowCube.setVector(cubeToPlace.position);
             AllCubesPositions.Add(nowCube.getVector());
+camMoveToYPosition = 4.9f + nowCube.y;
 
-            Instantiate(vfx,cubeToPlace.position,Quaternion.identity );
+            GameObject newVfx =  Instantiate(vfx,cubeToPlace.position,Quaternion.identity )as GameObject;
+            Destroy(newVfx,1.5f);
             allCubesRb.isKinematic = true;
             allCubesRb.isKinematic = false;
+            if(PlayerPrefs.GetString("music")=="Yes")
+        GetComponent<AudioSource>().Play();
             SpawnPositions();
            MoveCameraChangeBg();
           
@@ -94,36 +100,55 @@ public class GameController : MonoBehaviour
 
     private void MoveCameraChangeBg()
     {
+        Transform mainCam = Camera.main.transform;
         int maxX = 0, maxY = 0, maxZ = 0, maxHor;
     foreach (Vector3 pos in AllCubesPositions)
         { 
-      if(Mathf.Abs(Convert.ToInt32(pos.x))> maxX)
+        if(Mathf.Abs(Convert.ToInt32(pos.x))> maxX)
         maxX=Convert.ToInt32(pos.x);
-
         if(Mathf.Abs(Convert.ToInt32(pos.y))> maxY)
         maxY=Convert.ToInt32(pos.y); 
-
         if(Mathf.Abs(Convert.ToInt32(pos.z))> maxZ)
         maxZ=Convert.ToInt32(pos.z);
         }
-      //  Transform mainCam = Camera.main.transform;
-        camMoveToYPosition = 4.9f + nowCube.y;
+
+      if(PlayerPrefs.GetInt("score")<maxY)
+      PlayerPrefs.SetInt("score",maxY);
+
+      scoreTxt.text="<size=15><color=#C31414>Best Score:</color></size>"+ PlayerPrefs.GetInt("score")+"<size=15><color=#1BB70F>Now:</color></size>"+Convert.ToString(maxY);
+      
+
         maxHor = maxX > maxZ ? maxX : maxZ;
-        if (maxHor%3==0)
-        {
+       if(maxHor%3==0 && prevCountMaxHorizontal != maxHor ){
             mainCam.localPosition -= new Vector3(0, 0, 2.5f);
             prevCountMaxHorizontal = maxHor;
-        }
-         mainCam.localPosition = new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z);
+            }
 
+       if (maxY >= 5)
+       {
+           
+toCameraColor = bgColors[1];
+       }
+            if (maxY >= 3){
+                
+                toCameraColor = bgColors[0];
+            }
+            
+            if (maxY >= 7){
+                 
+                toCameraColor = bgColors[2];
+            }
+            
+         
 
-        if (maxY >= 5)
-            toCameraColor = bgColors[1];
-            if (maxY >= 3)
-            toCameraColor = bgColors[0];
-            if (maxY >= 7)
-            toCameraColor = bgColors[2];
+        
+         
+            
+
+            
        
+
+
 
        
 
