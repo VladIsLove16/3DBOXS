@@ -252,9 +252,30 @@ MonoBehaviour:
   CubeChangePlaceSpeed: 0.5
   scoreTxt: {fileID: 1754905144}
   cubeToPlace: {fileID: 1061386559}
-  cubeToCreate: {fileID: 76782099}
+  Materials:
+  - {fileID: 2100000, guid: 0db2b99c60eb640b3b1490041f4e5664, type: 2}
+  - {fileID: 2100000, guid: 8424953b68a3550428809683e2f16288, type: 2}
+  - {fileID: 2100000, guid: ea452c2dfa3708e45995b58a828017e0, type: 2}
+  - {fileID: 2100000, guid: 7e31c053d453cc7449c1c3c2681f2bc3, type: 2}
+  - {fileID: 2100000, guid: eb040134818af0d4fb48a260ff22ae4b, type: 2}
+  - {fileID: 2100000, guid: a94df32ba0229e44a9cf662826c610c2, type: 2}
+  - {fileID: 2100000, guid: 675bcb8ca04bcdd4890d77b7b4bce948, type: 2}
+  - {fileID: 2100000, guid: 2337299014ce6fc469ef22766e7234e9, type: 2}
+  - {fileID: 2100000, guid: dde749cd60551a64ba1b96c141333011, type: 2}
   allCubes: {fileID: 1528493067}
   vfx: {fileID: 100748, guid: cd4d7020429cde74db076ffa72495419, type: 3}
+  cubesToCreate:
+  - {fileID: 4674678022608537849, guid: e493a04841d06644d907764cab4d50ca, type: 3}
+  - {fileID: 2162882717719916575, guid: 1181ef56b2af94a6bb407de264545174, type: 3}
+  - {fileID: 7748501710432368739, guid: 8de8dd3d635e34046b4913c111d6af45, type: 3}
+  - {fileID: 8147264337716108639, guid: 8213f7dd87ee142949eda0be85ce5957, type: 3}
+  - {fileID: 5599685515775830968, guid: 3f9d5c903ccd94ba6afa8fe771e71e55, type: 3}
+  - {fileID: 1895920124143056265, guid: 99c0c37a97c8843abb4327b134b1fb9f, type: 3}
+  - {fileID: 1492284095584916784, guid: 3f8dfa5f9cdc848288f132a4b37d1551, type: 3}
+  - {fileID: 4569275420328617957, guid: 8ce2632243f894458916bd6e700f1e5f, type: 3}
+  - {fileID: 4371939909094101357, guid: 2654914e36b524657beceb2674a8f61b, type: 3}
+  posibleMaterials: []
+  posibleCubesToCreate: []
   canvasStartPage:
   - {fileID: 1274323804}
   - {fileID: 1354325664}
@@ -568,7 +589,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904740833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5.4}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2120782842}
@@ -576,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.61578035, y: 0.040450867}
   m_AnchorMax: {x: 0.8814394, y: 0.1705607}
-  m_AnchoredPosition: {x: 17.399994, y: 87.2999}
+  m_AnchoredPosition: {x: 47.000008, y: 154}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5000008, y: 0.49279198}
 --- !u!95 &904740835
@@ -1166,7 +1187,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ae84d4c16578f0441bb6da38e6216e2c, type: 2}
+  - {fileID: 2100000, guid: 0db2b99c60eb640b3b1490041f4e5664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1384,7 +1405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1180491902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,7 +1476,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1465,12 +1486,12 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 1
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 1.12
+  far clip plane: 1000.3
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -2237,7 +2258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1729121395}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1729121397}
+        m_TargetAssemblyTypeName: CanvasButtons, Assembly-CSharp
+        m_MethodName: LoadShop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1729121395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2258,7 +2291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6af04d68745f1704abc7d148840c5875, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28e24dbb7716342bdb698c3b947fd710, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2518,7 +2551,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5bdcc1e58896aea49b3f5a58ae8c60b7, type: 2}
+  - {fileID: 2100000, guid: d58b50689dd564e73b941ff05f6fea81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CubeToPlace
+  m_Name: Cube 7
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
@@ -61,9 +61,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.53
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 1
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -73,6 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8867924, g: 0.3481861, b: 0, a: 1}
-    - _EmissionColor: {r: 0.7169812, g: 0.23698781, b: 0, a: 1}
-  m_BuildTextureStacks: []
+    - _Color: {r: 0.8862745, g: 0.29803923, b: 0.80933154, a: 1}
+    - _EmissionColor: {r: 0.7372549, g: 0.26666668, b: 0.5544995, a: 1}
