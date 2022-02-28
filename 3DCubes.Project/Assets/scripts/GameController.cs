@@ -45,19 +45,19 @@ public class GameController : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("score")<2)
         {}
-        else if (PlayerPrefs.GetInt("score")<4)
+        else if (PlayerPrefs.GetInt("score")<3)
         AddPossibleCubes(1);
-         else if (PlayerPrefs.GetInt("score")<7)
+         else if (PlayerPrefs.GetInt("score")<5)
         AddPossibleCubes(2);
-         else if (PlayerPrefs.GetInt("score")<11)
+         else if (PlayerPrefs.GetInt("score")<7)
         AddPossibleCubes(3);
-         else if (PlayerPrefs.GetInt("score")<13)
+         else if (PlayerPrefs.GetInt("score")<11)
         AddPossibleCubes(4);
-         else if (PlayerPrefs.GetInt("score")<16)
+         else if (PlayerPrefs.GetInt("score")<13)
         AddPossibleCubes(5);
-         else if (PlayerPrefs.GetInt("score")<19)
+         else if (PlayerPrefs.GetInt("score")<17)
         AddPossibleCubes(6);
-         else if (PlayerPrefs.GetInt("score")<21)
+         else if (PlayerPrefs.GetInt("score")<19)
         AddPossibleCubes(7);
 
         scoreTxt.text="<size=15><color=#C31414>Best score:</color></size>"+ PlayerPrefs.GetInt("score")+"<size=15><color=#1BB70F>Now:</color></size>";
